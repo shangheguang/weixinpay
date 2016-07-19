@@ -28,8 +28,8 @@
 require_once 'Wxpay.php';
 
 $Wxpay = new Wxpay();
-$total_fee = 1; //订单总金额，1元
-$Wxpay->total_fee = intval($total_fee*100);//订单的金额
+$total_fee = 1; //订单总金额
+$Wxpay->total_fee = intval($total_fee*100);//订单的金额 1元
 $Wxpay->out_trade_no = date('YmdHis') . substr(time(), - 5) . substr(microtime(), 2, 5) . sprintf('%02d', rand(0, 99));//订单号
 $Wxpay->body = '描述信息';//支付描述信息
 $Wxpay->time_expire = date('YmdHis', time()+86400);//订单支付的过期时间(eg:一天过期)
