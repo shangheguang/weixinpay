@@ -97,10 +97,10 @@ class Wxpay {
 
         //将微信返回的结果xml转成数组
         $responseArr = $this->WxPayHelper->xmlToArray($response);
-        if(!is_array($responseArr) || count($responseArr)<=0){
-        	return false;
+        if(isset($responseArr["return_code"]) && $responseArr["return_code"]=='SUCCESS'){
+        	return 	$this->getOrder($responseArr['prepay_id']);
         }
-        return 	$this->getOrder($responseArr['prepay_id']);
+        return $responseArr;
 	}
 	
 	/**
